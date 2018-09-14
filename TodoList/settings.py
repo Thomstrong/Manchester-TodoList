@@ -37,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'TodoApp',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,6 +50,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders'
 )
 
 ROOT_URLCONF = 'TodoList.urls'
@@ -76,8 +79,12 @@ WSGI_APPLICATION = 'TodoList.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'todolist',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
