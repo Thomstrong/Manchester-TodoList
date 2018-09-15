@@ -8,4 +8,4 @@
 *.pyc
 
 # migration file
-TodoApp/migrations/0001_*.py
+TodoApp/migrations/*.py
