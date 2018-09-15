@@ -20,4 +20,4 @@ class TodoListItemSerializer(serializers.HyperlinkedModelSerializer):
         super(TodoListItem, self.object).save(*args, **kwargs)
 
     def getRestTime(self, instance):
-        return instance.deadline - datetime.now(tz=pytz.timezone('Asia/Shanghai'))
+        return instance.deadline - datetime.now()
