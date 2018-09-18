@@ -1,7 +1,7 @@
+# coding=utf-8
 import uuid
 from datetime import datetime
 
-import pytz
 from rest_framework import serializers
 
 from TodoApp.models import TodoListItem
@@ -20,4 +20,20 @@ class TodoListItemSerializer(serializers.HyperlinkedModelSerializer):
         super(TodoListItem, self.object).save(*args, **kwargs)
 
     def getRestTime(self, instance):
-        return instance.deadline - datetime.now()
+        delta = instance.deadline - datetime.now()
+        days, hours, minute = delta.days, delta.seconds // 3600, (delta.seconds // 60) % 60
+
+        if days < 0:
+            hours = 23 - hours
+            minute = 60 - minute
+        if minute == 60:
+            hours += 1
+        if hours == 24:
+            days += 1
+
+        reStr = u" %d 天 %d 小时 %d 分钟"
+        if days >= 0:
+            reStr = u"还剩" + reStr % (days, hours, minute)
+        else:
+            reStr = u"逾期" + reStr % (-days, hours, minute)
+        return reStr
