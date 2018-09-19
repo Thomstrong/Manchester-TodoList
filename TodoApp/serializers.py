@@ -33,7 +33,7 @@ class TodoListItemSerializer(serializers.HyperlinkedModelSerializer):
 
         reStr = u" %d 天 %d 小时 %d 分钟"
         if days >= 0:
-            reStr = u"还剩" + reStr % (days, hours, minute)
+            reStr = u"还剩" + reStr % (days, hours, minute + 1)
         else:
-            reStr = u"逾期" + reStr % (-days, hours, minute)
+            reStr = u"逾期" + reStr % (-days, hours, minute - 1)
         return reStr
