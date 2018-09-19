@@ -26,6 +26,9 @@ class TodoListItem(viewsets.ModelViewSet):
     @action(methods=['post'])
     def SetStatus(self, request, pk):
         instance = self.get_object()
+        newStatus = request.DATA['status']
+        if newStatus == 2:
+            instance.priority = -1
         instance.status = int(request.DATA['status'])
         instance.save()
         return Response({"message": "success"}, status=status.HTTP_200_OK)
