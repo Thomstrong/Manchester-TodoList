@@ -21,7 +21,7 @@ class TodoListItem(viewsets.ModelViewSet):
             else:
                 return self.queryset.order_by(m.group(0), )
         except Exception as e:
-            return self.queryset
+            return self.queryset.all()
 
     @action(methods=['post'])
     def SetStatus(self, request, pk):
