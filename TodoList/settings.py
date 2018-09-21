@@ -53,6 +53,12 @@ MIDDLEWARE_CLASSES = (
 
 )
 
+REST_FRAMEWORK = {
+    'PAGINATE_BY': 1000,                 # Default to 10
+    'PAGINATE_BY_PARAM': 'page_size',  # Allow client to override, using `?page_size=xxx`.
+    'MAX_PAGINATE_BY': 1000           # Maximum limit allowed when using `?page_size=xxx`.
+}
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_METHODS = [
