@@ -15,4 +15,6 @@ class TodoListItem(models.Model):
     priority = models.IntegerField()
     deadline = models.DateTimeField()
     #master changes
+    #master changes
+    #master changes
     status = models.IntegerField(choices=STATUS, default=0)
