@@ -14,4 +14,11 @@ class TodoListItem(models.Model):
     description = models.CharField(blank=False, max_length=255)
     priority = models.IntegerField()
     deadline = models.DateTimeField()
+    #测试
     status = models.IntegerField(choices=STATUS, default=0)
+
+
+
+
+
+
