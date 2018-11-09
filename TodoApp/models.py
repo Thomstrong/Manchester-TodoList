@@ -14,4 +14,5 @@ class TodoListItem(models.Model):
     description = models.CharField(blank=False, max_length=255)
     priority = models.IntegerField()
     deadline = models.DateTimeField()
+    #master changes
     status = models.IntegerField(choices=STATUS, default=0)
